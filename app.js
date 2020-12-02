@@ -50,66 +50,75 @@ $(document).ready(function(){
                     jsonresults.resultado.Table.sort(GetSortOrder("NOMBRE"));
                 if($("#ordenar").val()=="precio")
                     jsonresults.resultado.Table.sort(GetSortOrder("PRECIO"));
-
-                for (var i=0;i<Object.keys(jsonresults.resultado.Table).length;++i){
-
-                    const productoDiv = document.createElement('div');
-                    productoDiv.classList.add("container");
-                    productoDiv.id = "productodiv";
-
-                    const productoDivrow = document.createElement('div');
-                    productoDivrow.classList.add("row");
-                    productoDiv.appendChild(productoDivrow);
-
-                    const productoDivcol = document.createElement('div');
-                    productoDivcol.classList.add("col-md-2")
-                    productoDivrow.appendChild(productoDivcol);
-
-                    const imagen = document.createElement('img');
-                    imagen.classList.add("imagen");
-                    imagen.src = jsonresults.resultado.Table[i].IMAGEN;
-                    imagen.height = 100;
-                    imagen.width = 100;
-                    productoDivcol.appendChild(imagen);
-
-                    const segundoDiv = document.createElement('div');
-                    productoDivrow.appendChild(segundoDiv);
-
-                    const nombre = document.createElement('h5');
-                    nombre.id = "nombre";
-                    nombre.classList.add("nombre");
-                    nombre.innerHTML = jsonresults.resultado.Table[i].NOMBRE;
-                    segundoDiv.appendChild(nombre);
-
-                    const descripcion = document.createElement('h5');
-                    descripcion.id = "hidden";
-                    descripcion.classList.add("descripcion");
-                    descripcion.innerHTML = jsonresults.resultado.Table[i].DESCRIPCION;
-                    segundoDiv.appendChild(descripcion);
-
-                    const presentacion = document.createElement('h5');
-                    presentacion.id = "hidden";
-                    presentacion.classList.add("presentacion");
-                    presentacion.innerHTML = jsonresults.resultado.Table[i].PRESENTACION;
-                    segundoDiv.appendChild(presentacion);
-
-                    const precio = document.createElement('h6');
-                    precio.id = "precio";
-                    precio.classList.add("precio");
-                    precio.innerHTML = jsonresults.resultado.Table[i].PRECIO + " pesos";
-                    segundoDiv.appendChild(precio);
-
-                    const categoria = document.createElement('h7');
-                    categoria.id = "categoria";
-                    categoria.classList.add("categoria");
-                    categoria.innerHTML = jsonresults.resultado.Table[i].CATEGORIA_PROD_TIENDA;
-                    segundoDiv.appendChild(categoria);
-
-                    productosList.appendChild(productoDiv);
-                    //todoList.appendChild(productoDivrow);
-                    //todoList.appendChild(segundoDiv);
+                
+                if(Object.keys(jsonresults.resultado.Table).length == 0){
+                    document.getElementById("resultados").style.display = "block";
                 }
-            }       
+                else{
+                    for (var i=0;i<Object.keys(jsonresults.resultado.Table).length;++i){
+                        document.getElementById("resultados").style.display = "none";
+                        const productoDiv = document.createElement('div');
+                        productoDiv.classList.add("container");
+                        productoDiv.id = "productodiv";
+    
+                        const productoDivrow = document.createElement('div');
+                        productoDivrow.classList.add("row");
+                        productoDiv.appendChild(productoDivrow);
+    
+                        const productoDivcol = document.createElement('div');
+                        productoDivcol.classList.add("col-md-2")
+                        productoDivrow.appendChild(productoDivcol);
+    
+                        const imagen = document.createElement('img');
+                        imagen.classList.add("imagen");
+                        imagen.src = jsonresults.resultado.Table[i].IMAGEN;
+                        imagen.height = 100;
+                        imagen.width = 100;
+                        productoDivcol.appendChild(imagen);
+    
+                        const segundoDiv = document.createElement('div');
+                        productoDivrow.appendChild(segundoDiv);
+    
+                        const nombre = document.createElement('h5');
+                        nombre.id = "nombre";
+                        nombre.classList.add("nombre");
+                        nombre.innerHTML = jsonresults.resultado.Table[i].NOMBRE;
+                        segundoDiv.appendChild(nombre);
+    
+                        const descripcion = document.createElement('h5');
+                        descripcion.id = "hidden";
+                        descripcion.classList.add("descripcion");
+                        descripcion.innerHTML = jsonresults.resultado.Table[i].DESCRIPCION;
+                        segundoDiv.appendChild(descripcion);
+    
+                        const presentacion = document.createElement('h5');
+                        presentacion.id = "hidden";
+                        presentacion.classList.add("presentacion");
+                        presentacion.innerHTML = jsonresults.resultado.Table[i].PRESENTACION;
+                        segundoDiv.appendChild(presentacion);
+    
+                        const precio = document.createElement('h6');
+                        precio.id = "precio";
+                        precio.classList.add("precio");
+                        precio.innerHTML = jsonresults.resultado.Table[i].PRECIO + " pesos";
+                        segundoDiv.appendChild(precio);
+    
+                        const categoria = document.createElement('h7');
+                        categoria.id = "categoria";
+                        categoria.classList.add("categoria");
+                        categoria.innerHTML = jsonresults.resultado.Table[i].CATEGORIA_PROD_TIENDA;
+                        segundoDiv.appendChild(categoria);
+    
+                        productosList.appendChild(productoDiv);
+                        //todoList.appendChild(productoDivrow);
+                        //todoList.appendChild(segundoDiv);
+                }
+                
+                }
+            },
+            error: function(error){
+                alert(error);
+            }      
         })
     });
     const seleccionado = document.querySelector(".productos-list");
