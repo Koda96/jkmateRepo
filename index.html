@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="./style.css">
+    
+    <title>JKMATE prueba</title>
+</head>
+<body>
+    <form>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label>Nombre del producto</label>
+                        <input class="form-control" id="nombreproducto" placeholder="Nombre del producto">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <select class="form-control" id="miselect">
+                        <option></option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="container" id="miboton">
+            <div class="row">
+                <div class="col-md-6">
+                    <button type="submit" class="btn btn-primary">Buscar</button>
+                </div>
+            </div>
+        </div>
+        <div class="container" id="miboton">
+            <div class="row">
+                <div class="col-md-6">
+                    <select class="form-control" id="ordenar">
+                        <option value="precio">Ordenar por Precio</option>
+                        <option value="letra">Ordenar por Letra</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+      </form>
+
+    <div class="productos">
+        <ul class="productos-list"></ul>
+    </div>
+
+    <div class="container">
+        <div class="modal" id="mimodal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <img src="https://img.freepik.com/vector-gratis/vector-onda-azul-transparente_1055-7084.jpg?size=338&ext=jpg" width="150" height="150">
+                                <h6 class="descripcionmodal" id="descripcionmodal"></h6>
+                            </div>
+                            <div class="col-md-4">
+                                <h6 class="nombremodal" id="nombremodal"></h6>
+                                <h6 class="preciomodal" id="preciomodal"></h6>
+                                <h6 class="presentacionmodal" id="presentacionmodal"></h6>
+                                <h6>Categoria:</h6>
+                                <h6 class="categoriamodal" id="categoriamodal"></h6>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-info">Agregar al Carrito</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="./app.js"></script>
+</body>
+</html>
